@@ -20,12 +20,12 @@ ctx.lineTo(185, 65);
 ctx.lineTo(125, 65);
 ctx.fill();
 
-/*
+
 ctx.beginPath();
 ctx.moveTo(200, 45);
 ctx.lineTo(185, 125);
 ctx.stroke();
-*/
+
 
 
 
@@ -46,13 +46,14 @@ ctx.fillText("Hello world", 300, 50);
 
 ctx.fillStyle = "rgba(245, 100, 162, 0.5)";
 ctx.strokeText("Hello world", 304, 54);
-
+/*
 let grd = ctx.createLinearGradient(140, 170, 200, 100);
 grd.addColorStop(0, "#F564A2");
 grd.addColorStop(1, "#F9DBE8");
 
 ctx.fillStyle = grd;
 ctx.fillRect(140, 170, 200, 100);
+*/
 
 /*
 let grd2 = ctx.createRadialGradient(240, 320, 5, 255, 340, 100);
