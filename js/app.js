@@ -46,14 +46,15 @@ ctx.fillText("Hello world", 300, 50);
 
 ctx.fillStyle = "rgba(245, 100, 162, 0.5)";
 ctx.strokeText("Hello world", 304, 54);
-/*
-let grd = ctx.createLinearGradient(140, 170, 200, 100);
-grd.addColorStop(0, "#F564A2");
-grd.addColorStop(1, "#F9DBE8");
+
+let grd = ctx.createLinearGradient(140, 250, 200, 100);
+grd.addColorStop(0, "#EBA6C3");
+grd.addColorStop(0.5, "#F279AD");
+grd.addColorStop(1, "#B2004C");
 
 ctx.fillStyle = grd;
-ctx.fillRect(140, 170, 200, 100);
-*/
+ctx.fillRect(140, 250, 200, 100);
+
 
 /*
 let grd2 = ctx.createRadialGradient(240, 320, 5, 255, 340, 100);
