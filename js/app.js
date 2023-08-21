@@ -4,8 +4,6 @@ let figura = true;
 //ctx.fillStyle = "rgba(199, 29, 189, 0.5)";
 
 canvas.addEventListener("click", (event) => {
-    //console.log(event);
-
     if(figura) {
         ctx.beginPath();
         ctx.arc(event.layerX, event.layerY, 50, 0, 2 * Math.PI);
@@ -31,6 +29,14 @@ function random_rgba() {
 canvas.addEventListener("mouseout", (event) => {
     figura = !figura;
 
+});
+
+canvas.addEventListener("mousemove", (event) => {
+    console.log("mousemove");
+    ctx.beginPath();
+    ctx.arc(event.layerX, event.layerY, 10, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.stroke();
 });
 
 
