@@ -1,6 +1,7 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 let figura = true;
+let press = true;
 //ctx.fillStyle = "rgba(199, 29, 189, 0.5)";
 
 canvas.addEventListener("click", (event) => {
@@ -32,11 +33,21 @@ canvas.addEventListener("mouseout", (event) => {
 });
 
 canvas.addEventListener("mousemove", (event) => {
-    console.log("mousemove");
-    ctx.beginPath();
-    ctx.arc(event.layerX, event.layerY, 10, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
+    //console.log("mousemove");
+    if(press) {
+        ctx.beginPath();
+        ctx.arc(event.layerX, event.layerY, 10, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+    }
+});
+
+canvas.addEventListener("mousedown", (event) => {
+    press = true;
+});
+
+canvas.addEventListener("mouseup", (event) => {
+    press = false;
 });
 
 
