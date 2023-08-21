@@ -1,8 +1,18 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
+canvas.addEventListener("click", (event) => {
+    console.log("Hola");
+    console.log(event);
 
-ctx.fillStyle = "rgb(53, 129, 220)";
+    ctx.beginPath();
+    ctx.fillStyle = "rgba(199, 29, 189, 0.5)";
+    ctx.arc(event.layerX, event.layerY, 50, 0, 2 * Math.PI);
+    ctx.fill();
+});
+
+
+/*ctx.fillStyle = "rgb(53, 129, 220)";
 ctx.fillRect(10, 10, 55, 55);
 
 ctx.fillStyle = "rgb(236, 34, 120)";
@@ -67,3 +77,4 @@ ctx.fillRect(140, 350, 200, 100);
 
 let img = document.getElementById('myImg');
 ctx.drawImage(img, 400, 200, 70, 60);
+*/
