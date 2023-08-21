@@ -63,3 +63,7 @@ grd2.addColorStop(1, "white");
 
 ctx.fillStyle = grd2;
 ctx.fillRect(140, 350, 200, 100);
+
+
+let img = document.getElementById('myImg');
+ctx.drawImage(img, 400, 200, 70, 60);
