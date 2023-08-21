@@ -6,10 +6,22 @@ canvas.addEventListener("click", (event) => {
     console.log(event);
 
     ctx.beginPath();
-    ctx.fillStyle = "rgba(199, 29, 189, 0.5)";
+    //ctx.fillStyle = "rgba(199, 29, 189, 0.5)";
     ctx.arc(event.layerX, event.layerY, 50, 0, 2 * Math.PI);
     ctx.fill();
+    ctx.stroke();
 });
+
+canvas.addEventListener("mouseover", (event) => {
+    console.log("mouseover");
+    color = random_rgba();
+    ctx.fillStyle = color;
+});
+
+function random_rgba() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+}
 
 
 /*ctx.fillStyle = "rgb(53, 129, 220)";
