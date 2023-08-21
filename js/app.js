@@ -56,13 +56,10 @@ ctx.fillStyle = grd;
 ctx.fillRect(140, 250, 200, 100);
 
 
-/*
-let grd2 = ctx.createRadialGradient(240, 320, 5, 255, 340, 100);
-grd2.addColorStop(0, "#F24B0D");
-//grd2.addColorStop(0.5, "#F12E81");
-grd2.addColorStop(1, "##9C104C");
+let grd2 = ctx.createRadialGradient(200, 380, 5, 255, 370, 100);
+grd2.addColorStop(0, "#5059E1");
+grd2.addColorStop(0.5, "#30369D");
+grd2.addColorStop(1, "white");
 
 ctx.fillStyle = grd2;
-ctx.fillRect( 240, 320, 200, 100 );
-
-*/
+ctx.fillRect(140, 350, 200, 100);
