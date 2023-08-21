@@ -1,15 +1,20 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
+let figura = true;
+//ctx.fillStyle = "rgba(199, 29, 189, 0.5)";
 
 canvas.addEventListener("click", (event) => {
-    console.log("Hola");
-    console.log(event);
+    //console.log(event);
 
-    ctx.beginPath();
-    //ctx.fillStyle = "rgba(199, 29, 189, 0.5)";
-    ctx.arc(event.layerX, event.layerY, 50, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
+    if(figura) {
+        ctx.beginPath();
+        ctx.arc(event.layerX, event.layerY, 50, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+    }else {
+        ctx.fillRect(event.layerX-50, event.layerY-50, 100, 100);
+        ctx.strokeRect(event.layerX-50, event.layerY-50, 100, 100);
+    }
 });
 
 canvas.addEventListener("mouseover", (event) => {
@@ -22,6 +27,11 @@ function random_rgba() {
     var o = Math.round, r = Math.random, s = 255;
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
+
+canvas.addEventListener("mouseout", (event) => {
+    figura = !figura;
+
+});
 
 
 /*ctx.fillStyle = "rgb(53, 129, 220)";
