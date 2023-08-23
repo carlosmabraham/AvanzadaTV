@@ -1,6 +1,46 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-let figura = true;
+let x = 225, y = 225;
+
+
+
+document.addEventListener("keydown", (event) => {
+    console.log(event);
+    /*
+    switch(event.keyCode) {
+        case 87:
+
+        case 83:
+
+        case 65:
+
+        case 68:
+
+    }
+    */
+
+    x = Math.floor(Math.random()*450);
+    y = Math.floor(Math.random()*450);
+
+
+
+    ctx.fillStyle = random_rgba();
+    repaint();
+});
+
+
+function repaint() {
+    ctx.fillRect(x, y, 50, 50);
+    ctx.strokeRect(x, y, 50, 50);
+}
+
+
+function random_rgba() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+}
+
+/*let figura = true;
 let press = true;
 //ctx.fillStyle = "rgba(199, 29, 189, 0.5)";
 
@@ -22,10 +62,7 @@ canvas.addEventListener("mouseover", (event) => {
     ctx.fillStyle = color;
 });
 
-function random_rgba() {
-    var o = Math.round, r = Math.random, s = 255;
-    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
-}
+
 
 canvas.addEventListener("mouseout", (event) => {
     figura = !figura;
@@ -48,7 +85,7 @@ canvas.addEventListener("mousedown", (event) => {
 
 canvas.addEventListener("mouseup", (event) => {
     press = false;
-});
+});*/
 
 
 /*ctx.fillStyle = "rgb(53, 129, 220)";
