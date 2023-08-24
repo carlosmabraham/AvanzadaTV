@@ -27,16 +27,23 @@ document.addEventListener("keydown", (event) => {
     //y = Math.floor(Math.random()*450);
 
 
-
+    repaintCanvas();
     ctx.fillStyle = random_rgba();
     repaint();
 });
 
 
 const repaint = () => {
+    //ctx.fillStyle = "white";
+	//ctx.fillRect(0,0,500,500);
     ctx.fillRect(x, y, 50, 50);
     ctx.strokeRect(x, y, 50, 50);
 };
+
+const repaintCanvas = () => {
+    ctx.fillStyle = "white";
+	ctx.fillRect(0,0,500,500);
+}
 
 const random_rgba = () => {
     var o = Math.round, r = Math.random, s = 255;
