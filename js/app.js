@@ -6,21 +6,25 @@ let x = 225, y = 225;
 
 document.addEventListener("keydown", (event) => {
     console.log(event);
-    /*
+    
     switch(event.keyCode) {
         case 87:
-
+            y -= 20;
+            break;
         case 83:
-
+            y += 20;
+            break;
         case 65:
-
+            x -= 20;
+            break;
         case 68:
-
+            x += 20;
+            break;
     }
-    */
+    
 
-    x = Math.floor(Math.random()*450);
-    y = Math.floor(Math.random()*450);
+    //x = Math.floor(Math.random()*450);
+    //y = Math.floor(Math.random()*450);
 
 
 
@@ -29,19 +33,24 @@ document.addEventListener("keydown", (event) => {
 });
 
 
-function repaint() {
+const repaint = () => {
     ctx.fillRect(x, y, 50, 50);
     ctx.strokeRect(x, y, 50, 50);
-}
+};
 
+const random_rgba = () => {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+};
 
+/*
 function random_rgba() {
     var o = Math.round, r = Math.random, s = 255;
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
-
+*/
 /*let figura = true;
-let press = true;
+let press = true;5
 //ctx.fillStyle = "rgba(199, 29, 189, 0.5)";
 
 canvas.addEventListener("click", (event) => {
