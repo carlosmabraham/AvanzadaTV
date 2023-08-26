@@ -34,8 +34,6 @@ document.addEventListener("keydown", (event) => {
 
 
 const repaint = () => {
-    //ctx.fillStyle = "white";
-	//ctx.fillRect(0,0,500,500);
     ctx.fillRect(x, y, 50, 50);
     ctx.strokeRect(x, y, 50, 50);
 };
