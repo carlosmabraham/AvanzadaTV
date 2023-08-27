@@ -2,7 +2,7 @@ const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
 
-//pantalones
+//Pantalones
 ctx.fillStyle = "#1130B8"
 ctx.fillRect(200, 300, 100, 170);
 
@@ -33,4 +33,36 @@ ctx.arc(183, 275, 15, 0, 2 * Math.PI);
 ctx.fill();
 ctx.beginPath();
 ctx.arc(313, 275, 15, 0, 2 * Math.PI);
+ctx.fill();
+
+//Cabeza
+ctx.fillRect(235, 120, 30, 30);
+ctx.beginPath();
+ctx.arc(250, 84, 40, 0, 2 * Math.PI);
+ctx.fill();
+ctx.beginPath();
+ctx.arc(212, 80, 15, 0, 2 * Math.PI);
+ctx.fill();
+ctx.beginPath();
+ctx.arc(288, 80, 15, 0, 2 * Math.PI);
+ctx.fill();
+ctx.fillStyle = "black";
+ctx.beginPath();
+ctx.arc(210, 80, 3, 0, 2 * Math.PI);
+ctx.fill();
+ctx.beginPath();
+ctx.arc(295, 80, 3, 0, 2 * Math.PI);
+ctx.fill();
+ctx.beginPath();
+ctx.arc(240, 73, 5, 0, 2 * Math.PI);
+ctx.fill();
+ctx.beginPath();
+ctx.arc(270, 73, 5, 0, 2 * Math.PI);
+ctx.fill();
+ctx.beginPath();
+ctx.arc(250, 90, 15, 0, 1 * Math.PI);
+ctx.stroke();
+ctx.fillStyle = "#7B4107";
+ctx.beginPath();
+ctx.arc(250, 62, 34, 3.1, 2 * Math.PI);
 ctx.fill();
