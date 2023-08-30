@@ -1,0 +1,95 @@
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+//Cielo
+let grd = ctx.createLinearGradient(0, 0, 0, 250);
+grd.addColorStop(0, "rgb(120, 48, 189)");
+grd.addColorStop(1, "white");
+ctx.fillStyle = grd;
+ctx.fillRect(0,0,500,250);
+
+ctx.fillStyle = "rgb(249, 246, 184)";
+ctx.beginPath();
+ctx.arc(370, 120, 15, 0, 2 * Math.PI);
+ctx.fill();
+
+
+//Pasto
+ctx.fillStyle = "rgb(8, 124, 32)";
+ctx.beginPath();
+ctx.moveTo(0, 500);
+ctx.lineTo(500, 350);
+ctx.lineTo(500, 500);
+ctx.fill();
+ctx.fillStyle = "rgb(8, 83, 24)";
+ctx.beginPath();
+ctx.moveTo(0, 500);
+ctx.lineTo(0, 350);
+ctx.lineTo(500, 350);
+ctx.fill();
+ctx.fillStyle = "rgb(2, 50, 12)";
+ctx.beginPath();
+ctx.moveTo(0, 350);
+ctx.lineTo(500, 250);
+ctx.lineTo(500, 350);
+ctx.fill();
+
+//Arboles
+ctx.fillStyle = "rgb(1, 62, 14)";
+ctx.beginPath();
+ctx.moveTo(410, 410);
+ctx.lineTo(425, 450);
+ctx.lineTo(395, 450);
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(330, 420);
+ctx.lineTo(345, 460);
+ctx.lineTo(315, 460);
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(170, 400);
+ctx.lineTo(215, 470);
+ctx.lineTo(125, 470);
+ctx.fill();
+ctx.fillStyle = "rgb(1, 37, 9)";
+ctx.beginPath();
+ctx.moveTo(80, 350);
+ctx.lineTo(70, 380);
+ctx.lineTo(90, 380);
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(280, 370);
+ctx.lineTo(270, 400);
+ctx.lineTo(290, 400);
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(30, 430);
+ctx.lineTo(20, 460);
+ctx.lineTo(40, 460);
+ctx.fill();
+ctx.fillStyle = "black";
+ctx.beginPath();
+ctx.moveTo(160, 320);
+ctx.lineTo(150, 340);
+ctx.lineTo(170, 340);
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(400, 320);
+ctx.lineTo(390, 340);
+ctx.lineTo(410, 340);
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(470, 260);
+ctx.lineTo(460, 280);
+ctx.lineTo(480, 280);
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(430, 260);
+ctx.lineTo(420, 280);
+ctx.lineTo(440, 280);
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(310, 300);
+ctx.lineTo(300, 320);
+ctx.lineTo(320, 320);
+ctx.fill();
