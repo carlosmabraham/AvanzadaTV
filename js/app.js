@@ -1,12 +1,13 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-let x = 225, y = 225;
+let x = 225, y = 225 , t_x = 350, t_y = 350;
 let dir = 0;
+let speed = 10;
 
 
 
 document.addEventListener("keydown", (event) => {
-    console.log(event);
+    //console.log(event);
     
     switch(event.keyCode) {
         case 87:
@@ -34,22 +35,31 @@ document.addEventListener("keydown", (event) => {
 const update = () => {
     switch(dir) {
         case 1:
-            y -= 10;
+            y -= speed;
             if( y < -50 ) { y = 550 };
             break;
         case 2:
-            y += 10;
+            y += speed;
             if( y > 550 ) { y = -50 };
             break;
         case 3:
-            x -= 10;
+            x -= speed;
             if( x < -50 ) { x = 550 };
             break;
         case 4:
-            x += 10;
+            x += speed;
             if( x > 550 ) { x = -50 };
             break;
     }
+
+    if(x < t_x + 40 &&  x + 50 > t_x &&    y < t_y + 40 &&    y + 50 > t_y){  
+        console.log("hola");
+        t_x = Math.random() * (460);
+        t_y = Math.random() * (460);
+        speed += 2;
+    }
+
+
 
     repaintCanvas();
     ctx.fillStyle = random_rgba();
@@ -72,6 +82,9 @@ window.requestAnimationFrame(update);
 const repaint = () => {
     ctx.fillRect(x, y, 50, 50);
     ctx.strokeRect(x, y, 50, 50);
+    //pintar objeto
+    ctx.fillStyle = "black";
+    ctx.fillRect(t_x, t_y, 40, 40);
 };
 
 const repaintCanvas = () => {
