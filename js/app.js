@@ -1,6 +1,6 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-let x = 225, y = 225 , t_x = 350, t_y = 350;
+let x = 225, y = 225 , t_x = 350, t_y = 350, w_x = 100, w_y = 70;
 let dir = 0;
 let speed = 10;
 
@@ -59,6 +59,24 @@ const update = () => {
         speed += 2;
     }
 
+    if(x < w_x + 280 &&  x + 50 > w_x &&    y < w_y + 30 &&    y + 50 > w_y){  
+        switch(dir) {
+            case 1:
+                y += speed;
+                break;
+            case 2:
+                y -= speed;
+                break;
+            case 3:
+                x += speed;
+                break;
+            case 4:
+                x -= speed;
+                break;
+        }
+        dir = 0;
+    }
+
 
 
     repaintCanvas();
@@ -85,6 +103,8 @@ const repaint = () => {
     //pintar objeto
     ctx.fillStyle = "black";
     ctx.fillRect(t_x, t_y, 40, 40);
+    ctx.fillStyle = "gray";
+    ctx.fillRect(w_x, w_y, 280, 30);
 };
 
 const repaintCanvas = () => {
