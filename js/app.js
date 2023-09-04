@@ -7,8 +7,6 @@ let speed = 10;
 
 
 document.addEventListener("keydown", (event) => {
-    //console.log(event);
-    
     switch(event.keyCode) {
         case 87:
             dir = 1;
@@ -23,13 +21,6 @@ document.addEventListener("keydown", (event) => {
             dir = 4;
             break;
     }
-    
-
-    //x = Math.floor(Math.random()*450);
-    //y = Math.floor(Math.random()*450);
-
-
-    //update();
 });
  
 const update = () => {
@@ -117,6 +108,8 @@ const random_rgba = () => {
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 };
 
+
+
 /*
 function random_rgba() {
     var o = Math.round, r = Math.random, s = 255;
@@ -181,32 +174,13 @@ ctx.fillStyle = "rgba(245, 100, 162, 0.5)";
 ctx.fillRect(102, 100, 55, 55);
 
 
-ctx.fillStyle = "rgb(236, 34, 120)";
-
-ctx.beginPath();
-ctx.moveTo(185, 10);
-ctx.lineTo(185, 65);
-ctx.lineTo(125, 65);
-ctx.fill();
-
-
-ctx.beginPath();
-ctx.moveTo(200, 45);
-ctx.lineTo(185, 125);
-ctx.stroke();
 
 
 
 
-ctx.fillStyle = "blue";
-ctx.beginPath();
-ctx.arc(135, 200, 40, 0, 2 * Math.PI);
-ctx.fill();
 
-ctx.fillStyle = "rgba(245, 100, 162, 0.5)";
-ctx.beginPath();
-ctx.arc(230, 200, 40, 0, 2 * Math.PI);
-ctx.stroke();
+
+
 
 
 ctx.fillStyle = "blue";
