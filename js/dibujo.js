@@ -186,6 +186,13 @@ ctx.moveTo(426, 347);
 ctx.lineTo(417, 354);
 ctx.stroke();
 
+//Tube
+ctx.fillStyle = "rgb(12, 128, 5)";
+ctx.fillRect(328, 378, 50, 50);
+ctx.strokeRect(328, 378, 50, 50);
+ctx.fillRect(320, 347, 65, 30);
+ctx.strokeRect(320, 347, 65, 30);
+
 //Three
 ctx.strokeStyle = "rgb(9, 101, 22)";
 ctx.fillStyle = "rgb(77, 211, 96)";
