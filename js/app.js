@@ -1,11 +1,16 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 let dir = 0;
-let speed = 10;
+let speed = 5;
 let walls = [];
 let pause = false;
 let score = 0;
-let image = new Image();
+let elefante = new Image();
+let arbol = new Image();
+let sound1 = new Audio();
+elefante.src = './img/elefante.png';
+arbol.src = './img/arbol.png';
+sound1.src = './sound/donkey-kong-coin.mp3';
 
 
 const random_rgba = () => {
@@ -26,8 +31,10 @@ const repaint = () => {
     ctx.fillStyle = "black";
     ctx.fillText("SCORE:" + score, 10, 20)
 
-    player.pintar(ctx);
-    player2.pintar(ctx);
+    //player.pintar(ctx);
+    ctx.drawImage(elefante, player.x, player.y);
+    //player2.pintar(ctx);
+    ctx.drawImage(arbol, player2.x, player2.y);
     walls[0].pintar(ctx);
     walls[1].pintar(ctx);
 
@@ -71,6 +78,7 @@ const update = () => {
         player2.y = Math.random() * (440);
         score += 10
         speed += 1;
+        sound1.play();
     };
 
 
