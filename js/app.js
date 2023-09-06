@@ -1,10 +1,139 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-let x = 225, y = 225 , t_x = 350, t_y = 350, w_x = 100, w_y = 70;
 let dir = 0;
 let speed = 10;
+let walls = [];
+let pause = false;
+let score = 0;
+let image = new Image();
 
 
+const random_rgba = () => {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+};
+
+const player = new Cuadro(250,250,40,40,random_rgba());
+const player2 = new Cuadro(30, 30, 30, 30, "black");
+walls.push(new Cuadro(100, 70, 280, 30, "gray"));
+walls.push(new Cuadro(100, 400, 280, 30, "gray"));
+
+
+const repaint = () => {
+    window.requestAnimationFrame(repaint);
+    ctx.fillStyle = "white";
+	ctx.fillRect(0,0,500,500);
+    ctx.fillStyle = "black";
+    ctx.fillText("SCORE:" + score, 10, 20)
+
+    player.pintar(ctx);
+    player2.pintar(ctx);
+    walls[0].pintar(ctx);
+    walls[1].pintar(ctx);
+
+    if( pause ) {
+        dir = 0;
+        ctx.fillStyle = "rgba(0,0,0,0.5)";
+        ctx.fillRect(0, 0, 500, 500);
+
+        ctx.fillStyle = "white";
+        ctx.fillText('P A U S E', 230, 230)
+    } else {
+        update();
+    }
+
+};
+
+ 
+const update = () => {
+    switch(dir) {
+        case 1:
+            player.y -= speed;
+            if( player.y < -50 ) { player.y = 550 };
+            break;
+        case 2:
+            player.y += speed;
+            if( player.y > 550 ) { player.y = -50 };
+            break;
+        case 3:
+            player.x -= speed;
+            if( player.x < -50 ) { player.x = 550 };
+            break;
+        case 4:
+            player.x += speed;
+            if( player.x > 550 ) { player.x = -50 };
+            break;
+    }
+
+    if(player.se_tocan(player2)) {
+        console.log("hola");
+        player2.x = Math.random() * (460);
+        player2.y = Math.random() * (440);
+        score += 10
+        speed += 1;
+    };
+
+
+    for(let i = walls.length -1; i >= 0; i--) {
+        if(player.se_tocan( walls[i] )) {
+            switch(dir) {
+                case 1:
+                    player.y += speed;
+                    break;
+                case 2:
+                    player.y -= speed;
+                    break;
+                case 3:
+                    player.x += speed;
+                    break;
+                case 4:
+                    player.x -= speed;
+                    break;
+            }
+            dir = 0;
+        };
+
+        
+    };
+};
+
+
+function Cuadro(x,y,w,h,c) {
+	this.x = x;
+	this.y = y;
+	this.w = w;
+	this.h = h;
+	this.c = c;
+
+	this.se_tocan = function (target) { 
+
+		if(this.x < target.x + target.w &&
+			this.x + this.w > target.x && 
+			this.y < target.y + target.h && 
+			this.y + this.h > target.y)
+			{
+				return true;	 
+			}  
+		};
+
+    this.pintar = function (ctx) {
+        ctx.fillStyle = this.c;
+        ctx.fillRect(this.x, this.y, this.w, this.h);
+        ctx.strokeRect(this.x, this.y, this.w, this.h);
+    };
+}
+
+
+
+window.requestAnimationFrame = (function () {
+    return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        function (callback) {
+            window.setTimeout(callback, 17);
+        };
+}());
+window.requestAnimationFrame(repaint);
 
 document.addEventListener("keydown", (event) => {
     switch(event.keyCode) {
@@ -20,94 +149,11 @@ document.addEventListener("keydown", (event) => {
         case 68:
             dir = 4;
             break;
+        case 32:
+            pause = (pause) ? false : true;
+            break;
     }
 });
- 
-const update = () => {
-    switch(dir) {
-        case 1:
-            y -= speed;
-            if( y < -50 ) { y = 550 };
-            break;
-        case 2:
-            y += speed;
-            if( y > 550 ) { y = -50 };
-            break;
-        case 3:
-            x -= speed;
-            if( x < -50 ) { x = 550 };
-            break;
-        case 4:
-            x += speed;
-            if( x > 550 ) { x = -50 };
-            break;
-    }
-
-    if(x < t_x + 40 &&  x + 50 > t_x &&    y < t_y + 40 &&    y + 50 > t_y){  
-        console.log("hola");
-        t_x = Math.random() * (460);
-        t_y = Math.random() * (460);
-        speed += 2;
-    }
-
-    if(x < w_x + 280 &&  x + 50 > w_x &&    y < w_y + 30 &&    y + 50 > w_y){  
-        switch(dir) {
-            case 1:
-                y += speed;
-                break;
-            case 2:
-                y -= speed;
-                break;
-            case 3:
-                x += speed;
-                break;
-            case 4:
-                x -= speed;
-                break;
-        }
-        dir = 0;
-    }
-
-
-
-    repaintCanvas();
-    ctx.fillStyle = random_rgba();
-    repaint();
-    window.requestAnimationFrame(update);
-};
-
-window.requestAnimationFrame = (function () {
-    return window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        function (callback) {
-            window.setTimeout(callback, 17);
-        };
-}());
-
-window.requestAnimationFrame(update);
-
-
-const repaint = () => {
-    ctx.fillRect(x, y, 50, 50);
-    ctx.strokeRect(x, y, 50, 50);
-    //pintar objeto
-    ctx.fillStyle = "black";
-    ctx.fillRect(t_x, t_y, 40, 40);
-    ctx.fillStyle = "gray";
-    ctx.fillRect(w_x, w_y, 280, 30);
-};
-
-const repaintCanvas = () => {
-    ctx.fillStyle = "white";
-	ctx.fillRect(0,0,500,500);
-}
-
-const random_rgba = () => {
-    var o = Math.round, r = Math.random, s = 255;
-    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
-};
-
 
 
 /*
